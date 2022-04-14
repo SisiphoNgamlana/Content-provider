@@ -2,4 +2,7 @@
     <string name="app_name">League of Badass</string>
     <string name="image_of_the_badass">Image of the Badass</string>
     <string name="name">Name</string>
+    <string name="add_another_badass">Add a new Badass</string>
+    <string name="name_header_text">Name :</string>
+    <string name="text_name_of_badass">Name of Badass</string>
 </resources>

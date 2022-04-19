@@ -2,14 +2,12 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.new_badass_menu_item) {
+        if (menuItem.getItemId() == R.id.menu_item_add_new_badass) {
             Intent intent = new Intent(getApplicationContext(), AddNewBadAssActivity.class);
             startActivity(intent);
         }
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ListFragment badAssListFragment = new ListFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_activity_container, badAssListFragment, BAD_ASS_FRAGMENT_TAG);
+        fragmentTransaction.replace(R.id.container_main_activity, badAssListFragment, BAD_ASS_FRAGMENT_TAG);
         fragmentTransaction.commit();
     }
 }

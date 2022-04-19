@@ -116,10 +116,15 @@ public class BadAssContentProvider extends ContentProvider {
                 if (getContext() != null) {
                     int result = badAssDao.deleteBadAss(ContentUris.parseId(uri));
                     getContext().getContentResolver().notifyChange(uri, null);
+                    if (result != 0) {
+                        Log.d(TAG, "Delete successfull");
+                    } else {
+                        Log.d(TAG, "Delete failed");
+                    }
                     return result;
                 }
             default:
-                throw new IllegalArgumentException("Invalid URI: insert failed" + uri);
+                throw new IllegalArgumentException("Invalid URI: delete failed" + uri);
         }
     }
 

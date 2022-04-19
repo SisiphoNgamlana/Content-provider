@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +49,16 @@ public class BadAssDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView badAssName = view.findViewById(R.id.badass_name_textView);
+        TextView badAssName = view.findViewById(R.id.badass_name_edittext);
         ImageView badAssImageDisplay = view.findViewById(R.id.badass_image_imageView);
+        Button buttonUpdateBadassDetails = view.findViewById(R.id.button_update_badass_details);
         badAssName.setText(badAssBundle.getName());
         badAssImageDisplay.setImageResource(badAssBundle.getImage());
+        buttonUpdateBadassDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO UPDATE connect to content provider
+            }
+        });
     }
 }

@@ -28,6 +28,5 @@ public class BadAssDetailsActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.badass_details_frame_layout, badAssDetailsFragment, TAG_BADASS_FRAGMENT);
         fragmentTransaction.commit();
-
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -10,9 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".AddNewBadAssActivity"
             android:parentActivityName=".MainActivity"
-            android:name=".BadAssDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".BadAssDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,9 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.example.myapplication"
-            android:name=".data.BadAssContentProvider"/>
+            android:name=".data.BadAssContentProvider"
+            android:authorities="com.example.myapplication" />
     </application>
 
 </manifest>

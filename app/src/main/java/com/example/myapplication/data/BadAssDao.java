@@ -19,13 +19,13 @@ public interface BadAssDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     int update(BadAss badAss);
 
-    @Query("SELECT * FROM badass_table WHERE id == :id")
+    @Query("SELECT * FROM badass_table WHERE id = :id")
     Cursor findBadassById(long id);
 
     @Query("SELECT * FROM badass_table")
     Cursor findAllBadAsses();
 
-    @Query("DELETE FROM badass_table WHERE id == :id ")
+    @Query("DELETE FROM badass_table WHERE id = :id")
     int deleteBadAss(long id);
 
     @Query("DELETE FROM badass_table")

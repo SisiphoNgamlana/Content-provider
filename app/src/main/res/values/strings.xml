@@ -2,4 +2,13 @@
     <string name="app_name">League of Badass</string>
     <string name="image_of_the_badass">Image of the Badass</string>
     <string name="name">Name</string>
+    <string name="add_another_badass">Add a new Badass</string>
+    <string name="text_edit_badass_details">Edit badass details</string>
+    <string name="text_image_url">Image URL :</string>
+    <string name="text_name_of_badass">Name of Badass</string>
+    <string name="text_image_url_hint">Image URL of Badass</string>
+    <string name="text_add_new_badass">Add new Badass</string>
+    <string name="text_load_random_image">Load random Image</string>
+    <string name="text_update_badass_details">Update Badass details</string>
+    <string name="text_delete_all_badass">Delete all badass</string>
 </resources>

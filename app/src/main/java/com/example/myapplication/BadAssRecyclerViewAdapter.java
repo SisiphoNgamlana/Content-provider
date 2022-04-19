@@ -17,6 +17,7 @@ public class BadAssRecyclerViewAdapter extends RecyclerView.Adapter<BadAssRecycl
 
     private final List<BadAss> listOfBadAss;
     private BadAssRecyclerViewAdapter.onClickBadAssItemListener onClickBadAssItemListener;
+    private BadAssRecyclerViewAdapter.OnLongClickBadAssItemListener onLongClickBadAssItemListener;
 
 
     public void setOnClickBadAssItemListener(BadAssRecyclerViewAdapter
@@ -24,6 +25,9 @@ public class BadAssRecyclerViewAdapter extends RecyclerView.Adapter<BadAssRecycl
         this.onClickBadAssItemListener = onClickBadAssItemListener;
     }
 
+    public void setOnLongClickBadAssItemListener(OnLongClickBadAssItemListener onLongClickBadAssItemListener){
+        this.onLongClickBadAssItemListener = onLongClickBadAssItemListener;
+    }
 
     public BadAssRecyclerViewAdapter(List<BadAss> listOfBadAss) {
         this.listOfBadAss = listOfBadAss;
@@ -40,13 +44,27 @@ public class BadAssRecyclerViewAdapter extends RecyclerView.Adapter<BadAssRecycl
 
     @Override
     public void onBindViewHolder(@NonNull BadAssViewHolder holder, int position) {
-        BadAss badAss = listOfBadAss.get(position);
-        holder.badassImageView.setImageResource(listOfBadAss.get(position).getImage());
+        BadAss badAss = listOfBadAss.get(holder.getAdapterPosition());
+        holder.badassImageView.setImageResource(listOfBadAss.get(holder.getAdapterPosition()).getImage());
         holder.badAssTextView.setText(badAss.getName());
         holder.itemView.setOnClickListener(view -> {
             onClickBadAssItemListener
                     .onBadAssItemClick(holder.itemView, holder.getAdapterPosition());
         });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                onLongClickBadAssItemListener.onLongClickBadAssItemListener(view, holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                return false;
+            }
+        });
+    }
+
+    public void clear(List<BadAss> listOfBadAss){
+        this.listOfBadAss.clear();
+        this.listOfBadAss.addAll(listOfBadAss);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -68,5 +86,9 @@ public class BadAssRecyclerViewAdapter extends RecyclerView.Adapter<BadAssRecycl
 
     public interface onClickBadAssItemListener {
         void onBadAssItemClick(View badassItemView, int position);
+    }
+
+    public interface OnLongClickBadAssItemListener {
+        void onLongClickBadAssItemListener(View badassItemView, int position);
     }
 }
